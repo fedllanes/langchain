@@ -266,7 +266,7 @@ class LLMChain(Chain):
                 self.output_key: self.output_parser.parse_result(generation),
                 "full_generation": generation,
             }
-            for generation in llm_result.generations
+            for generation in llm_result.generations if len(generation) > 0
         ]
         if self.return_final_only:
             result = [{self.output_key: r[self.output_key]} for r in result]
